@@ -1,0 +1,236 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.rel</groupId>
+    <artifactId>admin</artifactId>
+    <packaging>jar</packaging>
+    <version>0.8.8</version>
+    <name>admin</name>
+    <properties>
+        <springfox-version>2.7.0</springfox-version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+    <parent>
+        <artifactId>container</artifactId>
+        <groupId>com.rel</groupId>
+        <version>0.8.8</version>
+    </parent>
+
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <finalName>rel.dev</finalName>
+                <plugins>
+                    <plugin>
+
+                        <groupId>com.github.eirslett</groupId>
+                        <artifactId>frontend-maven-plugin</artifactId>
+                        <configuration>
+                            <nodeVersion>v6.9.5</nodeVersion>
+                            <npmVersion>3.10.10</npmVersion>
+                            <workingDirectory>webui</workingDirectory>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>install node and npm</id>
+                                <goals>
+                                    <goal>install-node-and-npm</goal>
+                                </goals>
+                                <configuration>
+                                    <nodeVersion>v6.9.5</nodeVersion>
+                                    <npmVersion>3.10.10</npmVersion>
+                                </configuration>
+                            </execution>
+
+                            <execution>
+                                <id>npm install</id>
+                                <goals>
+                                    <goal>npm</goal>
+                                </goals>
+                                <!-- Optional configuration which provides for running any npm command -->
+                                <configuration>
+                                    <arguments>install</arguments>
+                                </configuration>
+                            </execution>
+
+                           <execution>
+                                <id>npm run build</id>
+                                <goals>
+                                    <goal>npm</goal>
+                                </goals>
+                                <configuration>
+                                    <arguments>run build</arguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-maven-plugin</artifactId>
+                    </plugin>
+
+                    <!-- Миграции БД -->
+                    <plugin>
+                        <groupId>org.flywaydb</groupId>
+                        <artifactId>flyway-maven-plugin</artifactId>
+                        <version>4.2.0</version>
+                        <configuration>
+                            <configFile>src/main/resources/flyway.properties</configFile>
+                        </configuration>
+                    </plugin>
+
+                    <!-- Копирование файлов фронтенда (html, js) в пакет -->
+                    <plugin>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>3.0.2</version>
+                        <executions>
+                            <!-- copy webui dist folder to src/resource/webui -->
+                            <execution>
+                                <id>copy-resources</id>
+                                <phase>generate-resources</phase>
+                                <goals>
+                                    <goal>copy-resources</goal>
+                                </goals>
+                                <configuration>
+                                    <outputDirectory>src/main/resources/public</outputDirectory>
+                                    <resources>
+                                        <resource>
+                                            <directory>webui/dist/</directory>
+                                            <excludes>
+                                                <exclude>*.gz</exclude>
+                                            </excludes>
+                                        </resource>
+                                    </resources>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <!-- Установка временной зоны в тестах -->
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <systemPropertyVariables>
+                                <user.timezone>GMT</user.timezone>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+
+
+
+    <dependencies>
+
+        <!--<dependency>-->
+            <!--<groupId>io.jsonwebtoken</groupId>-->
+            <!--<artifactId>jjwt</artifactId>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.security</groupId>-->
+            <!--<artifactId>spring-security-jwt</artifactId>-->
+        <!--</dependency>-->
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-java8</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <!--			<scope>provided</scope>-->
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+        <!--SpringFox dependencies -->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <!--<version>${springfox-version}</version>-->
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <!--<version>${springfox-version}</version>-->
+        </dependency>
+
+        <!-- Manually Added  -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jdbc</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-messaging</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-joda</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+</project>
