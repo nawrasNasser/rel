@@ -4,6 +4,7 @@
 /container/admin/webui/node_modules
 /container/admin/webui/dist
 /container/admin/src/main/resources/public
+*.directory
 
 
 */target
