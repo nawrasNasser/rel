@@ -1,0 +1,6 @@
+com/rel/persistence/model/admin/AdminUserRole.class
+com/rel/persistence/repo/AdminUserRepo.class
+com/rel/persistence/model/admin/AdminUser.class
+com/rel/persistence/model/admin/AdminUserRole$Roles.class
+com/rel/persistence/model/VersionModel.class
+com/rel/persistence/DBConfig.class

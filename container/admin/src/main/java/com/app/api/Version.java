@@ -1,12 +1,12 @@
 package com.app.api;
 
+import com.rel.persistence.model.VersionModel;
 import io.swagger.annotations.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import static org.springframework.http.MediaType.*;
 
-import com.app.model.VersionModel;
 
 @RestController
 @RequestMapping(value = "/version", produces = { "application/json" })

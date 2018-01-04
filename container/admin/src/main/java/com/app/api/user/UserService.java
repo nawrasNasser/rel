@@ -2,11 +2,11 @@ package com.app.api.user;
 import java.util.List;
 import java.util.Optional;
 
-import com.app.model.*;
-import com.app.model.admin.AdminUser;
-import com.app.repo.AdminUserRepo;
 import com.google.common.base.Strings;
 
+import com.rel.persistence.model.admin.AdminUser;
+import com.rel.persistence.repo.AdminUserRepo;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -15,7 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 //import com.app.repo.UserRepo;
-import com.app.model.user.*;
+
 
 import org.springframework.transaction.annotation.Transactional;
 

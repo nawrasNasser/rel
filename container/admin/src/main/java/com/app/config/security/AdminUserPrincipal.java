@@ -1,6 +1,6 @@
 package com.app.config.security;
 
-import com.app.model.admin.AdminUser;
+import com.rel.persistence.model.admin.AdminUser;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,7 +1,8 @@
 package com.app.config.security;
 
-import com.app.model.admin.AdminUser;
-import com.app.repo.AdminUserRepo;
+
+import com.rel.persistence.model.admin.AdminUser;
+import com.rel.persistence.repo.AdminUserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

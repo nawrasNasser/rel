@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.model.response.*;
-import static com.app.model.response.OperationResponse.*;
+
 
 /*
 @ControllerAdvice tells your spring application that this class will do the exception handling for your application.
@@ -18,12 +17,12 @@ Use @ExceptionHandler annotation to define the class of Exception it will catch.
 @ControllerAdvice
 @RestController
 public class GlobalExceptionHandler {
-    @ExceptionHandler(value = DataIntegrityViolationException.class)
-    public OperationResponse handleBaseException(DataIntegrityViolationException e){
-        OperationResponse resp = new OperationResponse();
-        resp.setOperationStatus(ResponseStatusEnum.ERROR);
-        resp.setOperationMessage(e.getRootCause().getMessage());
-        return resp;
-    }
+//    @ExceptionHandler(value = DataIntegrityViolationException.class)
+//    public OperationResponse handleBaseException(DataIntegrityViolationException e){
+//        OperationResponse resp = new OperationResponse();
+//        resp.setOperationStatus(ResponseStatusEnum.ERROR);
+//        resp.setOperationMessage(e.getRootCause().getMessage());
+//        return resp;
+//    }
 
 }

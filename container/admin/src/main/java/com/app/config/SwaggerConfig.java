@@ -18,7 +18,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 //import static springfox.documentation.builders.PathSelectors.ant;
 import static com.google.common.collect.Lists.*;
 import java.util.*;
-import com.app.identity.*;
 
 
 
