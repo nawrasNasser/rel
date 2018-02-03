@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.rel</groupId>
     <artifactId>admin</artifactId>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
     <version>0.8.8</version>
     <name>admin</name>
     <properties>
@@ -35,42 +35,57 @@
                             <workingDirectory>webui</workingDirectory>
                         </configuration>
                         <executions>
-                            <execution>
-                                <id>install node and npm</id>
-                                <goals>
-                                    <goal>install-node-and-npm</goal>
-                                </goals>
-                                <configuration>
-                                    <nodeVersion>v6.9.5</nodeVersion>
-                                    <npmVersion>3.10.10</npmVersion>
-                                </configuration>
-                            </execution>
+                            <!--<execution>-->
+                            <!--<id>install node and npm</id>-->
+                            <!--<goals>-->
+                            <!--<goal>install-node-and-npm</goal>-->
+                            <!--</goals>-->
+                            <!--<configuration>-->
+                            <!--<nodeVersion>v6.9.5</nodeVersion>-->
+                            <!--<npmVersion>3.10.10</npmVersion>-->
+                            <!--</configuration>-->
+                            <!--</execution>-->
 
-                            <execution>
-                                <id>npm install</id>
-                                <goals>
-                                    <goal>npm</goal>
-                                </goals>
-                                <!-- Optional configuration which provides for running any npm command -->
-                                <configuration>
-                                    <arguments>install</arguments>
-                                </configuration>
-                            </execution>
+                            <!--<execution>-->
+                            <!--<id>npm install</id>-->
+                            <!--<goals>-->
+                            <!--<goal>npm</goal>-->
+                            <!--</goals>-->
+                            <!--&lt;!&ndash; Optional configuration which provides for running any npm command &ndash;&gt;-->
+                            <!--<configuration>-->
+                            <!--<arguments>install</arguments>-->
+                            <!--</configuration>-->
+                            <!--</execution>-->
 
-                           <execution>
-                                <id>npm run build</id>
-                                <goals>
-                                    <goal>npm</goal>
-                                </goals>
-                                <configuration>
-                                    <arguments>run build</arguments>
-                                </configuration>
-                            </execution>
+                            <!--<execution>-->
+                            <!--<id>npm run build</id>-->
+                            <!--<goals>-->
+                            <!--<goal>npm</goal>-->
+                            <!--</goals>-->
+                            <!--<configuration>-->
+                            <!--<arguments>run build</arguments>-->
+                            <!--</configuration>-->
+                            <!--</execution>-->
                         </executions>
                     </plugin>
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>
+                    </plugin>
+                    
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.6</version>
+                        <configuration>
+                            <webResources>
+                                <resource>
+                                    <directory>webui/dist/</directory>
+                                    <filtering>false</filtering>
+                                    <!--<excludes>*.map</excludes>-->
+                                </resource>
+                            </webResources>
+                        </configuration>
                     </plugin>
 
                     <!-- Копирование файлов фронтенда (html, js) в пакет -->
@@ -124,22 +139,22 @@
         </dependency>
 
         <!--<dependency>-->
-            <!--<groupId>io.jsonwebtoken</groupId>-->
-            <!--<artifactId>jjwt</artifactId>-->
+        <!--<groupId>io.jsonwebtoken</groupId>-->
+        <!--<artifactId>jjwt</artifactId>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>org.springframework.security</groupId>-->
-            <!--<artifactId>spring-security-jwt</artifactId>-->
+        <!--<groupId>org.springframework.security</groupId>-->
+        <!--<artifactId>spring-security-jwt</artifactId>-->
         <!--</dependency>-->
 
         <!--<dependency>-->
-            <!--<groupId>org.hibernate</groupId>-->
-            <!--<artifactId>hibernate-java8</artifactId>-->
+        <!--<groupId>org.hibernate</groupId>-->
+        <!--<artifactId>hibernate-java8</artifactId>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>org.postgresql</groupId>-->
-            <!--<artifactId>postgresql</artifactId>-->
-            <!--<scope>runtime</scope>-->
+        <!--<groupId>org.postgresql</groupId>-->
+        <!--<artifactId>postgresql</artifactId>-->
+        <!--<scope>runtime</scope>-->
         <!--</dependency>-->
 
         <dependency>
@@ -149,7 +164,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-tomcat</artifactId>
-            <!--			<scope>provided</scope>-->
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -173,12 +188,12 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
         <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-data-jpa</artifactId>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-data-jpa</artifactId>-->
         <!--</dependency>-->
         <!--<dependency>-->
-            <!--<groupId>org.springframework.boot</groupId>-->
-            <!--<artifactId>spring-boot-starter-jdbc</artifactId>-->
+        <!--<groupId>org.springframework.boot</groupId>-->
+        <!--<artifactId>spring-boot-starter-jdbc</artifactId>-->
         <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -223,6 +238,16 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-jasper</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-el</artifactId>
             <scope>provided</scope>
         </dependency>
     </dependencies>

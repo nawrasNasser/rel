@@ -1,4 +1,4 @@
-package com.app.api;
+package com.rel.api;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;

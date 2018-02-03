@@ -1,4 +1,4 @@
-package com.app.api;
+package com.rel.api;
 
 import com.rel.persistence.model.VersionModel;
 import io.swagger.annotations.*;

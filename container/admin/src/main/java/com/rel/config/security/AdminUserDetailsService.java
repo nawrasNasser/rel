@@ -1,4 +1,4 @@
-package com.app.config.security;
+package com.rel.config.security;
 
 
 import com.rel.persistence.model.admin.AdminUser;

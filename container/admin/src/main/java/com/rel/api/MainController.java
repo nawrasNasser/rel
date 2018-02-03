@@ -1,4 +1,4 @@
-package com.app.api;
+package com.rel.api;
 
 import org.springframework.stereotype.*;
 import org.springframework.beans.factory.annotation.Autowired;
