@@ -36,37 +36,37 @@
                             <workingDirectory>webui</workingDirectory>
                         </configuration>
                         <executions>
-                            <execution>
-                                <id>install node and npm</id>
-                                <goals>
-                                    <goal>install-node-and-npm</goal>
-                                </goals>
-                                <configuration>
-                                    <nodeVersion>v6.9.5</nodeVersion>
-                                    <npmVersion>3.10.10</npmVersion>
-                                </configuration>
-                            </execution>
+                            <!--<execution>-->
+                                <!--<id>install node and npm</id>-->
+                                <!--<goals>-->
+                                    <!--<goal>install-node-and-npm</goal>-->
+                                <!--</goals>-->
+                                <!--<configuration>-->
+                                    <!--<nodeVersion>v6.9.5</nodeVersion>-->
+                                    <!--<npmVersion>3.10.10</npmVersion>-->
+                                <!--</configuration>-->
+                            <!--</execution>-->
 
-                            <execution>
-                                <id>npm install</id>
-                                <goals>
-                                    <goal>npm</goal>
-                                </goals>
-                                <!-- Optional configuration which provides for running any npm command -->
-                                <configuration>
-                                    <arguments>install</arguments>
-                                </configuration>
-                            </execution>
+                            <!--<execution>-->
+                                <!--<id>npm install</id>-->
+                                <!--<goals>-->
+                                    <!--<goal>npm</goal>-->
+                                <!--</goals>-->
+                                <!--&lt;!&ndash; Optional configuration which provides for running any npm command &ndash;&gt;-->
+                                <!--<configuration>-->
+                                    <!--<arguments>install</arguments>-->
+                                <!--</configuration>-->
+                            <!--</execution>-->
 
-                            <execution>
-                                <id>npm run build</id>
-                                <goals>
-                                    <goal>npm</goal>
-                                </goals>
-                                <configuration>
-                                    <arguments>run build</arguments>
-                                </configuration>
-                            </execution>
+                            <!--<execution>-->
+                                <!--<id>npm run build</id>-->
+                                <!--<goals>-->
+                                    <!--<goal>npm</goal>-->
+                                <!--</goals>-->
+                                <!--<configuration>-->
+                                    <!--<arguments>run build</arguments>-->
+                                <!--</configuration>-->
+                            <!--</execution>-->
                         </executions>
                     </plugin>
                     <plugin>
@@ -139,25 +139,6 @@
             <version>0.8.8</version>
         </dependency>
 
-        <!--<dependency>-->
-        <!--<groupId>io.jsonwebtoken</groupId>-->
-        <!--<artifactId>jjwt</artifactId>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.security</groupId>-->
-        <!--<artifactId>spring-security-jwt</artifactId>-->
-        <!--</dependency>-->
-
-        <!--<dependency>-->
-        <!--<groupId>org.hibernate</groupId>-->
-        <!--<artifactId>hibernate-java8</artifactId>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.postgresql</groupId>-->
-        <!--<artifactId>postgresql</artifactId>-->
-        <!--<scope>runtime</scope>-->
-        <!--</dependency>-->
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -188,14 +169,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-data-jpa</artifactId>-->
-        <!--</dependency>-->
-        <!--<dependency>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-jdbc</artifactId>-->
-        <!--</dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>

@@ -43,6 +43,7 @@
     <modules>
         <module>admin</module>
         <module>persistence</module>
+        <module>front</module>
         <!--<module>application</module>-->
     </modules>
 
