@@ -13,8 +13,8 @@ import {LoggedUser} from '../com/login/logged.user.class';
 
 @Injectable()
 export class AuthenticationService {
-    private authUrl = "/auth/login";
-    private accountUrl = "/api/account";
+    private authUrl = "auth/login";
+    private accountUrl = "api/account";
     public headers = new HttpHeaders({"Content-Type": "application/x-www-form-urlencoded","Accept": "application/json, text/plain, */*,application/x-www-form-urlencoded","responseType":"text"});
     private loggedUser:LoggedUser;
 

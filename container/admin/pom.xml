@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.rel</groupId>
     <artifactId>admin</artifactId>
@@ -35,44 +36,44 @@
                             <workingDirectory>webui</workingDirectory>
                         </configuration>
                         <executions>
-                            <!--<execution>-->
-                            <!--<id>install node and npm</id>-->
-                            <!--<goals>-->
-                            <!--<goal>install-node-and-npm</goal>-->
-                            <!--</goals>-->
-                            <!--<configuration>-->
-                            <!--<nodeVersion>v6.9.5</nodeVersion>-->
-                            <!--<npmVersion>3.10.10</npmVersion>-->
-                            <!--</configuration>-->
-                            <!--</execution>-->
+                            <execution>
+                                <id>install node and npm</id>
+                                <goals>
+                                    <goal>install-node-and-npm</goal>
+                                </goals>
+                                <configuration>
+                                    <nodeVersion>v6.9.5</nodeVersion>
+                                    <npmVersion>3.10.10</npmVersion>
+                                </configuration>
+                            </execution>
 
-                            <!--<execution>-->
-                            <!--<id>npm install</id>-->
-                            <!--<goals>-->
-                            <!--<goal>npm</goal>-->
-                            <!--</goals>-->
-                            <!--&lt;!&ndash; Optional configuration which provides for running any npm command &ndash;&gt;-->
-                            <!--<configuration>-->
-                            <!--<arguments>install</arguments>-->
-                            <!--</configuration>-->
-                            <!--</execution>-->
+                            <execution>
+                                <id>npm install</id>
+                                <goals>
+                                    <goal>npm</goal>
+                                </goals>
+                                <!-- Optional configuration which provides for running any npm command -->
+                                <configuration>
+                                    <arguments>install</arguments>
+                                </configuration>
+                            </execution>
 
-                            <!--<execution>-->
-                            <!--<id>npm run build</id>-->
-                            <!--<goals>-->
-                            <!--<goal>npm</goal>-->
-                            <!--</goals>-->
-                            <!--<configuration>-->
-                            <!--<arguments>run build</arguments>-->
-                            <!--</configuration>-->
-                            <!--</execution>-->
+                            <execution>
+                                <id>npm run build</id>
+                                <goals>
+                                    <goal>npm</goal>
+                                </goals>
+                                <configuration>
+                                    <arguments>run build</arguments>
+                                </configuration>
+                            </execution>
                         </executions>
                     </plugin>
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>
                     </plugin>
-                    
+
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-war-plugin</artifactId>

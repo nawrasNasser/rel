@@ -26,13 +26,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/public/**","/assets/**","*.html","/index.html","/*.html" ,"/home.html", "/login.html", "/","/*.css","/*.js","/*.png");
+        web.ignoring().antMatchers("/public/**","/assets/**",
+            "*.html","/index.html","/*.html" ,"/home.html", "/login.html", "/","/*.css","/*.js","/*.png");
     }
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
         // @formatter:off
-        http.authorizeRequests().antMatchers("/auth/login","/index.html", "/home.html", "/login.html", "/","/*.css","/*.js","/*.png").permitAll()
+        http.authorizeRequests().antMatchers("/auth/login","/index.html", "/home.html",
+            "/login.html", "/","/*.css","/*.js","/*.png").permitAll()
             .anyRequest().authenticated()
             .and()
             .authorizeRequests()

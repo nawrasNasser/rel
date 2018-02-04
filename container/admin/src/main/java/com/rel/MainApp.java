@@ -14,26 +14,26 @@ import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfigura
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.jmx.JmxAutoConfiguration;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.*;
 
 
 @SpringBootApplication
-@EnableAutoConfiguration(exclude = {
-        DataSourceAutoConfiguration.class,
-        JpaRepositoriesAutoConfiguration.class,
-        FreeMarkerAutoConfiguration.class,
-        JmxAutoConfiguration.class,
-        CacheAutoConfiguration.class,
-        HibernateJpaAutoConfiguration.class
-})
+@EnableAutoConfiguration
 @ComponentScan({
         "com.rel"
 })
 @Import({SecurityConfig.class, DBConfig.class,WebMvcConfigurer.class})
-public class MainApp {
+public class MainApp extends SpringBootServletInitializer {
 	public static void main(String[] args) throws Exception {
 		new SpringApplication(MainApp.class).run(args);
 	}
+
+            @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+        return builder.sources(MainApp.class);
+    }
 }
