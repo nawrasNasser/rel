@@ -1,21 +1,22 @@
 package com.rel.admin.config.security;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+import springfox.documentation.annotations.ApiIgnore;
 
 @Controller
-@RequestMapping("/api/account")
+@Slf4j
+@ApiIgnore
 public class SuccessLoginController{
 
     private AdminUserDetailsService adminUserDetailsService;
 
-    @RequestMapping(method = RequestMethod.POST)
-    public @ResponseBody
+    public
+    @ResponseBody
+    @RequestMapping(value={"/api/account"},method = RequestMethod.POST)
     AccountDTO account(){
-
         return adminUserDetailsService.getAccountDTO();
     }
 

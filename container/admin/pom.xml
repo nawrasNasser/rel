@@ -26,49 +26,49 @@
             <build>
                 <finalName>rel.dev</finalName>
                 <plugins>
-                    <plugin>
+                    <!--<plugin>-->
 
-                        <groupId>com.github.eirslett</groupId>
-                        <artifactId>frontend-maven-plugin</artifactId>
-                        <configuration>
-                            <nodeVersion>v6.9.5</nodeVersion>
-                            <npmVersion>3.10.10</npmVersion>
-                            <workingDirectory>webui</workingDirectory>
-                        </configuration>
-                        <executions>
-                            <!--<execution>-->
-                                <!--<id>install node and npm</id>-->
-                                <!--<goals>-->
-                                    <!--<goal>install-node-and-npm</goal>-->
-                                <!--</goals>-->
-                                <!--<configuration>-->
-                                    <!--<nodeVersion>v6.9.5</nodeVersion>-->
-                                    <!--<npmVersion>3.10.10</npmVersion>-->
-                                <!--</configuration>-->
-                            <!--</execution>-->
+                        <!--<groupId>com.github.eirslett</groupId>-->
+                        <!--<artifactId>frontend-maven-plugin</artifactId>-->
+                        <!--<configuration>-->
+                            <!--<nodeVersion>v6.9.5</nodeVersion>-->
+                            <!--<npmVersion>3.10.10</npmVersion>-->
+                            <!--<workingDirectory>webui</workingDirectory>-->
+                        <!--</configuration>-->
+                        <!--<executions>-->
+                            <!--&lt;!&ndash;<execution>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<id>install node and npm</id>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<goals>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<goal>install-node-and-npm</goal>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</goals>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<configuration>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<nodeVersion>v6.9.5</nodeVersion>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<npmVersion>3.10.10</npmVersion>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</configuration>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</execution>&ndash;&gt;-->
 
-                            <!--<execution>-->
-                                <!--<id>npm install</id>-->
-                                <!--<goals>-->
-                                    <!--<goal>npm</goal>-->
-                                <!--</goals>-->
-                                <!--&lt;!&ndash; Optional configuration which provides for running any npm command &ndash;&gt;-->
-                                <!--<configuration>-->
-                                    <!--<arguments>install</arguments>-->
-                                <!--</configuration>-->
-                            <!--</execution>-->
+                            <!--&lt;!&ndash;<execution>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<id>npm install</id>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<goals>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<goal>npm</goal>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</goals>&ndash;&gt;-->
+                                <!--&lt;!&ndash;&lt;!&ndash; Optional configuration which provides for running any npm command &ndash;&gt;&ndash;&gt;-->
+                                <!--&lt;!&ndash;<configuration>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<arguments>install</arguments>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</configuration>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</execution>&ndash;&gt;-->
 
-                            <!--<execution>-->
-                                <!--<id>npm run build</id>-->
-                                <!--<goals>-->
-                                    <!--<goal>npm</goal>-->
-                                <!--</goals>-->
-                                <!--<configuration>-->
-                                    <!--<arguments>run build</arguments>-->
-                                <!--</configuration>-->
-                            <!--</execution>-->
-                        </executions>
-                    </plugin>
+                            <!--&lt;!&ndash;<execution>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<id>npm run build</id>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<goals>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<goal>npm</goal>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</goals>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<configuration>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<arguments>run build</arguments>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</configuration>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</execution>&ndash;&gt;-->
+                        <!--</executions>-->
+                    <!--</plugin>-->
                     <plugin>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>
@@ -78,43 +78,43 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-war-plugin</artifactId>
                         <version>2.6</version>
-                        <configuration>
-                            <webResources>
-                                <resource>
-                                    <directory>webui/dist/</directory>
-                                    <filtering>false</filtering>
-                                    <!--<excludes>*.map</excludes>-->
-                                </resource>
-                            </webResources>
-                        </configuration>
+                        <!--<configuration>-->
+                            <!--&lt;!&ndash;<webResources>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<resource>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;&lt;!&ndash;<directory>webui/dist/</directory>&ndash;&gt;&ndash;&gt;-->
+                                    <!--&lt;!&ndash;&lt;!&ndash;<filtering>false</filtering>&ndash;&gt;&ndash;&gt;-->
+                                    <!--&lt;!&ndash;&lt;!&ndash;<excludes>*.map</excludes>&ndash;&gt;&ndash;&gt;-->
+                                <!--&lt;!&ndash;</resource>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</webResources>&ndash;&gt;-->
+                        <!--</configuration>-->
                     </plugin>
 
                     <!-- Копирование файлов фронтенда (html, js) в пакет -->
-                    <plugin>
-                        <artifactId>maven-resources-plugin</artifactId>
-                        <version>3.0.2</version>
-                        <executions>
-                            <!-- copy webui dist folder to src/resource/webui -->
-                            <execution>
-                                <id>copy-resources</id>
-                                <phase>generate-resources</phase>
-                                <goals>
-                                    <goal>copy-resources</goal>
-                                </goals>
-                                <configuration>
-                                    <outputDirectory>src/main/resources/public</outputDirectory>
-                                    <resources>
-                                        <resource>
-                                            <directory>webui/dist/</directory>
-                                            <excludes>
-                                                <exclude>*.gz</exclude>
-                                            </excludes>
-                                        </resource>
-                                    </resources>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
+                    <!--<plugin>-->
+                        <!--<artifactId>maven-resources-plugin</artifactId>-->
+                        <!--<version>3.0.2</version>-->
+                        <!--<executions>-->
+                            <!--&lt;!&ndash; copy webui dist folder to src/resource/webui &ndash;&gt;-->
+                            <!--<execution>-->
+                                <!--<id>copy-resources</id>-->
+                                <!--<phase>generate-resources</phase>-->
+                                <!--<goals>-->
+                                    <!--<goal>copy-resources</goal>-->
+                                <!--</goals>-->
+                                <!--<configuration>-->
+                                    <!--<outputDirectory>src/main/resources/public</outputDirectory>-->
+                                    <!--<resources>-->
+                                        <!--<resource>-->
+                                            <!--<directory>webui/dist/</directory>-->
+                                            <!--<excludes>-->
+                                                <!--<exclude>*.gz</exclude>-->
+                                            <!--</excludes>-->
+                                        <!--</resource>-->
+                                    <!--</resources>-->
+                                <!--</configuration>-->
+                            <!--</execution>-->
+                        <!--</executions>-->
+                    <!--</plugin>-->
 
                     <!-- Установка временной зоны в тестах -->
                     <plugin>

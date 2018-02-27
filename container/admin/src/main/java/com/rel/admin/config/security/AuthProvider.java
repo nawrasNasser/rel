@@ -21,7 +21,8 @@ public class AuthProvider extends AbstractUserDetailsAuthenticationProvider {
     private RegistrationService registrationService;
 
     @Override
-    protected void additionalAuthenticationChecks(UserDetails userDetails, UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
+    protected void additionalAuthenticationChecks(UserDetails userDetails,
+                                                  UsernamePasswordAuthenticationToken authentication) throws AuthenticationException {
 
         if(authentication.getCredentials() == null){
             throw new BadCredentialsException("bad credentials!");
